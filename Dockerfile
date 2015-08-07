@@ -13,7 +13,7 @@ RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && wget "http://prdownloads.sourceforge.net/webadmin/webmin_${WEBMIN_VERSION}_all.deb" -P /tmp/ \
  && dpkg -i /tmp/webmin_${WEBMIN_VERSION}_all.deb \
  && rm -rf /tmp/webmin_${WEBMIN_VERSION}_all.deb \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
  && rm -rf /etc/cron.daily/apt /etc/cron.weekly/fstrim
 
 
