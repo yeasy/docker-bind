@@ -1,5 +1,4 @@
-#FROM ubuntu:14.04
-FROM yeasy/devbase
+FROM ubuntu:14.04
 MAINTAINER yeasy@github
 
 ENV DEBIAN_FRONTEND noninteractive
