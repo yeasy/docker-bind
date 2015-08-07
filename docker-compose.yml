@@ -9,7 +9,7 @@ bind:
     - "0.0.0.0:53:53/udp"
     - "10000:10000/tcp"
   volumes:
-    - /srv/docker/bind:/opt/data/bind
+    - /opt/data/bind:/data
   environment:
     - WEBMIN_ENABLED=true
     - ROOT_PASSWORD=password
