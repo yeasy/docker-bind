@@ -1,0 +1,17 @@
+# This will start a bind dns listen on host 53 UDP port.
+# Host must have a /opt/data/bind dir to store the data.
+# Users can access the web ui at port 10000 with root:password
+
+bind:
+  image: yeasy/bind:latest
+  hostname: bind
+  ports:
+    - "0.0.0.0:53:53/udp"
+    - "10000:10000/tcp"
+  volumes:
+    - /srv/docker/bind:/opt/data/bind
+  environment:
+    - WEBMIN_ENABLED=true
+    - ROOT_PASSWORD=password
+  restart: always
+
