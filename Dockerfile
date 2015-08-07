@@ -1,5 +1,8 @@
-FROM ubuntu:14.04
+#FROM ubuntu:14.04
+FROM yeasy/devbase
 MAINTAINER yeasy@github
+
+ENV DEBIAN_FRONTEND noninteractive
 
 ENV DATA_DIR=/data \
     BIND_USER=bind \
@@ -16,8 +19,7 @@ RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && dpkg -i /tmp/webmin_${WEBMIN_VERSION}_all.deb \
  && rm -rf /tmp/webmin_${WEBMIN_VERSION}_all.deb \
  && rm -rf /var/lib/apt/lists/* \
- && rm -rf /etc/cron.daily/apt /etc/cron.weekly/fstrim
-
+ && rm -f /etc/cron.daily/apt /etc/cron.weekly/fstrim
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
@@ -25,4 +27,3 @@ RUN chmod 755 /sbin/entrypoint.sh
 EXPOSE 53/udp 10000/tcp
 VOLUME ["${DATA_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
-
