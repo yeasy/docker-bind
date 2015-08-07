@@ -7,7 +7,9 @@ ENV DATA_DIR=/data \
 
 RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && apt-get update \
- && apt-get install -y vim.tiny wget sudo ca-certificates bind9 perl libnet-ssleay-perl openssl \
+ && apt-get install -y --no-install-recommends \
+      vim.tiny wget sudo net-tools ca-certificates unzip \
+      bind9 perl libnet-ssleay-perl openssl \
       libauthen-pam-perl libpam-runtime libio-pty-perl \
       apt-show-versions python \
  && wget "http://prdownloads.sourceforge.net/webadmin/webmin_${WEBMIN_VERSION}_all.deb" -P /tmp/ \
